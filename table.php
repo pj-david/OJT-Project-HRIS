@@ -80,16 +80,17 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                                             $connection = mysqli_connect("localhost", "root", "", "humanresourcesdb");
                                             echo "<thead>";
                                                 echo "<tr>";
-                                                    echo "<th>Employee ID</th>";
-                                                    echo "<th>First Name</th>"; 
-                                                    echo "<th>Last Name</th>";
+                                                    echo "<th>ID</th>";
+                                                    echo "<th>Name (Last, First, Middle)</th>";
                                                     echo "<th>Gender</th>";
                                                     echo "<th>Age</th>";
+                                                    echo "<th>Contact No</th>";
+                                                    echo "<th>Address</th>";
                                                 echo "</tr>";
                                             echo "</thead>";
                                             echo "<tbody>";
                                                     if(isset($_POST)){
-                                                        $query = mysqli_query($connection, "select employeeid, firstName, lastName, gender, age from employees;");
+                                                        $query = mysqli_query($connection, "select employeeid, firstName, middleName, lastName, gender, age, contactNo, address from employees;");
 
                                                         $count = mysqli_num_rows($query);
                                                         if($count == 0){
@@ -99,15 +100,19 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                                                             while($row = mysqli_fetch_array($query)){
                                                             $employeeid = $row['employeeid'];
                                                             $firstName = $row['firstName'];
+                                                            $middleName = $row['middleName'];
                                                             $lastName = $row['lastName'];
                                                             $gender = $row['gender'];
                                                             $age = $row['age'];
+                                                            $contactNo = $row['contactNo'];
+                                                            $address = $row['address'];
                                                                 echo "<tr class='gradeA'>";
                                                                     echo "<td>$employeeid</td>";
-                                                                    echo "<td>$firstName</td>";
-                                                                    echo "<td>$lastName</td>";
+                                                                    echo "<td>$lastName, $firstName, $middleName</td>";
                                                                     echo "<td>$gender</td>";
                                                                     echo "<td>$age</td>";
+                                                                    echo "<td>$contactNo</td>";
+                                                                    echo "<td>$address</td>";
                                                                 echo "</tr>";
                                                             }
                                                         }
