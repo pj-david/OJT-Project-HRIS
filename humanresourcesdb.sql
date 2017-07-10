@@ -1,10 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `humanresourcesdb` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `humanresourcesdb`;
 -- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
 --
 -- Host: localhost    Database: humanresourcesdb
 -- ------------------------------------------------------
--- Server version	5.7.11
+-- Server version	5.7.14
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -50,7 +48,7 @@ CREATE TABLE `employees` (
   `statusEndDate` text,
   `statusEvaluationDate` text,
   PRIMARY KEY (`employeeId`)
-) ENGINE=MyISAM AUTO_INCREMENT=47 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=21502 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -145,6 +143,38 @@ LOCK TABLES `resigned-separated` WRITE;
 /*!40000 ALTER TABLE `resigned-separated` DISABLE KEYS */;
 /*!40000 ALTER TABLE `resigned-separated` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user` (
+  `userid` int(11) NOT NULL AUTO_INCREMENT,
+  `type` varchar(45) DEFAULT NULL,
+  `firstName` varchar(45) NOT NULL,
+  `lastName` varchar(45) NOT NULL,
+  `department` varchar(45) NOT NULL,
+  `username` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  `employeeId` varchar(45) NOT NULL,
+  PRIMARY KEY (`userid`),
+  UNIQUE KEY `username_UNIQUE` (`username`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'admin','Josepablo','David','HR','pj','david',NULL,'1');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -155,4 +185,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-29 13:50:54
+-- Dump completed on 2017-07-10 10:56:15

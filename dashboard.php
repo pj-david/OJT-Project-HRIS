@@ -1,13 +1,15 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Free Bootstrap Admin Template : Binary Admin</title>
+    <title>MetPhil HRIS</title>
 	<!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
+     <!-- MORRIS CHART STYLES-->
+    <link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
         <!-- CUSTOM STYLES-->
     <link href="assets/css/custom.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
@@ -23,7 +25,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Binary admin</a> 
+                <a class="navbar-brand" href="index.php">MetPhil Medical</a> 
             </div>
   <div style="color: white;
 padding: 15px 50px 5px 50px;
@@ -34,39 +36,18 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                 <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-				<li class="text-center">
-                    <img src="assets/img/find_user.png" class="user-image img-responsive"/>
-					</li>
-				
-					
                     <li>
-                        <a  href="index.html"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
+                        <a class="active-menu" href="index.php"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
                     </li>
-                      <li>
-                        <a  href="ui.html"><i class="fa fa-desktop fa-3x"></i> UI Elements</a>
-                    </li>
+                    
                     <li>
-                        <a  href="tab-panel.html"><i class="fa fa-qrcode fa-3x"></i> Tabs & Panels</a>
-                    </li>
-						   <li  >
-                        <a  href="chart.html"><i class="fa fa-bar-chart-o fa-3x"></i> Morris Charts</a>
-                    </li>	
-                      <li  >
-                        <a  href="table.html"><i class="fa fa-table fa-3x"></i> Table Examples</a>
-                    </li>
-                    <li  >
-                        <a  href="form.html"><i class="fa fa-edit fa-3x"></i> Forms </a>
-                    </li>				
-					
-					                   
-                    <li>
-                        <a href="#"><i class="fa fa-sitemap fa-3x"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-table fa-3x"></i> Table<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">Second Level Link</a>
+                                <a href="table.php">General Employee Data</a>
                             </li>
                             <li>
-                                <a href="#">Second Level Link</a>
+                                <a href="fullTable.php">Full Employee Data</a>
                             </li>
                             <li>
                                 <a href="#">Second Level Link<span class="fa arrow"></span></a>
@@ -85,10 +66,11 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                                
                             </li>
                         </ul>
-                      </li>  
-                  <li  >
-                        <a class="active-menu"  href="blank.html"><i class="fa fa-square-o fa-3x"></i> Blank Page</a>
-                    </li>	
+                      </li> 
+                    
+                    <li  >
+                        <a  href="form.php"><i class="fa fa-edit fa-3x"></i> Forms </a>
+                    </li>					
                 </ul>
                
             </div>
@@ -99,15 +81,17 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
             <div id="page-inner">
                 <div class="row">
                     <div class="col-md-12">
-                     <h2>Blank Page</h2>   
-                        <h5>Welcome Jhon Deo , Love to see you back. </h5>
-                       
+                     <h2>Admin Dashboard</h2>   
+                        <h5>Welcome User!</h5>
                     </div>
-                </div>
+                </div>              
                  <!-- /. ROW  -->
-                 <hr />
-               
-    </div>
+                  <hr />
+                
+                 <!-- /. ROW  -->
+                <hr />                
+                <div class="row">
+                    
              <!-- /. PAGE INNER  -->
             </div>
          <!-- /. PAGE WRAPPER  -->
@@ -120,6 +104,9 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
     <script src="assets/js/bootstrap.min.js"></script>
     <!-- METISMENU SCRIPTS -->
     <script src="assets/js/jquery.metisMenu.js"></script>
+     <!-- MORRIS CHART SCRIPTS -->
+     <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="assets/js/morris/morris.js"></script>
       <!-- CUSTOM SCRIPTS -->
     <script src="assets/js/custom.js"></script>
     

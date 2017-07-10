@@ -12,6 +12,7 @@
    
         <!-- CUSTOM STYLES-->
     <link href="assets/css/custom.css" rel="stylesheet" />
+    <link href="assets/css/style.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
      <!-- TABLE STYLES-->
@@ -29,21 +30,36 @@
                 </button>
                 <a class="navbar-brand" href="index.php">MetPhil Medical</a> 
             </div>
-  <div style="color: white;
-padding: 15px 50px 5px 50px;
-float: right;
-font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+            <div style="color: white; padding: 15px 50px 5px 50px; float: right; font-size: 16px;"> 
+                <a href="login/index.php" class="btn btn-danger square-btn-adjust">Logout</a> 
+                <?php
+                    if(isset($_POST['Logout'])) {
+                        $_SESSION['loggedin'] = false;
+                        session_destroy();        
+                    } 
+                ?>
+            </div>
         </nav>   
            <!-- /. NAV TOP  -->
                 <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li>
-                        <a  href="index.php"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
+                        <a  href="dashboard.php"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
                     </li>
-                    <li  >
-                        <a class="active-menu"  href="table.php"><i class="fa fa-table fa-3x"></i> Table</a>
-                    </li>
+                    
+                    <li>
+                        <a href="#"><i class="fa fa-table fa-3x"></i> Table<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="active-menu" href="table.php">General Employee Data</a>
+                            </li>
+                            <li>
+                                <a href="fullTable.php">Full Employee Data</a>
+                            </li>
+                        </ul>
+                      </li> 
+                    
                     <li  >
                         <a  href="form.php"><i class="fa fa-edit fa-3x"></i> Forms </a>
                     </li>					
@@ -71,48 +87,48 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                     <div class="col-md-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                 Employee Data table.
+                                 Employee General Data table.
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">
-                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <table class="table table-bordered" id="dataTables-example">
+                                        <thead>
+                                            <th>Name (Last, First, Middle)</th>
+                                            <th>ID</th>
+                                            <th>Gender</th>
+                                            <th>Age</th>
+                                            <th>Contact No</th>
+                                            <th>Position</th>
+                                            <th>Status</th>
+                                        </thead>
                                         <?php
-                                            $connection = mysqli_connect("localhost", "root", "", "humanresourcesdb");
-                                            echo "<thead>";
-                                                echo "<tr>";
-                                                    echo "<th>ID</th>";
-                                                    echo "<th>Name (Last, First, Middle)</th>";
-                                                    echo "<th>Gender</th>";
-                                                    echo "<th>Age</th>";
-                                                    echo "<th>Contact No</th>";
-                                                    echo "<th>Address</th>";
-                                                echo "</tr>";
-                                            echo "</thead>";
+                                            $connection = mysqli_connect("localhost", "root", "", "humanresourcesdb"); 
                                             echo "<tbody>";
-                                                    if(isset($_POST)){
-                                                        $query = mysqli_query($connection, "select employeeid, firstName, middleName, lastName, gender, age, contactNo, address from employees;");
-
+                                                    if(isset($_POST)){  
+                                                        $query = mysqli_query($connection, "SELECT employeeid, firstName, middleName, lastName, gender, age, contactNo, empStatus, position FROM employees ORDER BY lastName;");
                                                         $count = mysqli_num_rows($query);
                                                         if($count == 0){
                                                             echo "No results found.";
                                                             echo mysqli_error($connection);
                                                         }else{
                                                             while($row = mysqli_fetch_array($query)){
-                                                            $employeeid = $row['employeeid'];
-                                                            $firstName = $row['firstName'];
-                                                            $middleName = $row['middleName'];
-                                                            $lastName = $row['lastName'];
-                                                            $gender = $row['gender'];
-                                                            $age = $row['age'];
-                                                            $contactNo = $row['contactNo'];
-                                                            $address = $row['address'];
-                                                                echo "<tr class='gradeA'>";
+                                                            $employeeid = $row[0];
+                                                            $firstName = $row[1];
+                                                            $middleName = $row[2];
+                                                            $lastName = $row[3];
+                                                            $gender = $row[4];
+                                                            $age = $row[5];
+                                                            $contactNo = $row[6];
+                                                            $empStatus = $row[7];
+                                                            $position = $row[8];
+                                                                echo "<tr>";
+                                                                    echo "<td><form action='fulltable.php?employeeid=$employeeid' method='POST'><a href='fulltable.php?employeeid=$employeeid'>$lastName, $firstName, $middleName</a></form></td>";
                                                                     echo "<td>$employeeid</td>";
-                                                                    echo "<td>$lastName, $firstName, $middleName</td>";
                                                                     echo "<td>$gender</td>";
                                                                     echo "<td>$age</td>";
                                                                     echo "<td>$contactNo</td>";
-                                                                    echo "<td>$address</td>";
+                                                                    echo "<td>$position</td>";
+                                                                    echo "<td>$empStatus</td>";
                                                                 echo "</tr>";
                                                             }
                                                         }
