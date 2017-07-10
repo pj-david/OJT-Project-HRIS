@@ -1,4 +1,20 @@
 <!DOCTYPE html>
+<?php
+    session_start();
+
+    if ($_SESSION['loggedin'] == false ) {
+    header('Location: ../login/index.php');
+    }
+?>
+
+ <?php
+
+        $ntu_survey = new mysqli("localhost", "root", "", "humanresourcesdb");
+        // Check connection
+        if ($ntu_survey->connect_error) {
+            die("Connection failed: " . $ntu_survey->connect_error);
+        }
+    ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
       <meta charset="utf-8" />
@@ -69,7 +85,7 @@
                 <div class="row">
                     <div class="col-md-12">
                      <h2>Forms Page</h2>   
-                        <h5>Welcome user, This is where you add data into the table</h5>
+                        <h5>Welcome, This is where you add data into the table</h5>
                        
                     </div>
                 </div>

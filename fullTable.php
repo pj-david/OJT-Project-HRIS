@@ -1,4 +1,20 @@
 <!DOCTYPE html>
+<?php
+    session_start();
+
+    if ($_SESSION['loggedin'] == false ) {
+    header('Location: ../login/index.php');
+    }
+?>
+
+ <?php
+
+        $ntu_survey = new mysqli("localhost", "root", "", "humanresourcesdb");
+        // Check connection
+        if ($ntu_survey->connect_error) {
+            die("Connection failed: " . $ntu_survey->connect_error);
+        }
+    ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
       <meta charset="utf-8" />
@@ -73,7 +89,7 @@
                 <div class="row">
                     <div class="col-md-12">
                      <h2>HR Table</h2>   
-                        <h5>Welcome User!</h5>
+                        <h5>Welcome!</h5>
                     </div>
                 </div>
                  <!-- /. ROW  -->
@@ -169,89 +185,90 @@
                                     
                                     echo "<div class='row'>
                                             <div class='col-md-12'>
-                                            <div class='panel panel-default'>
+                                                <div class='panel panel-default'>
                                                     <div class='panel-heading'>Employee Resume</div>
                                                         <div class='panel-body'>
                                                             <div class='row'>
                                                                 <div class='col-md-6'>";
-                                                                    echo "<h2>$lastName, $firstName, $middleName</h2>";
-                                                                    echo "<h5>Employee Id</h5>";
-                                                                    echo "<hr>";
-                                                                    echo "<h6>$employeeid</h6>";
-                                                                    echo "<hr>";
-                                                                    echo "<h5>Gender</h5>";
-                                                                    echo "<hr>";
-                                                                    echo "<h6>$gender</h6>";
-                                                                    echo "<hr>";
-                                                                    echo "<h5>Age</h5>";
-                                                                    echo "<hr>";
-                                                                    echo "<h6>$age</h6>";
-                                                                    echo "<hr>";
-                                                                    echo "<h5>Contact Number</h5>";
-                                                                    echo "<hr>";
-                                                                    echo "<h6>$contactNo</h6>";
-                                                                    echo "<hr>";
-                                                                    echo "<h5>Address</h5>";
-                                                                    echo "<hr>";
-                                                                    echo "<h6>$address</h6>";
-                                                                    echo "<hr>";
-                                                                    echo "<h5>Bloodtype</h5>";
-                                                                    echo "<hr>";
-                                                                    echo "<h6>$bloodtype";
-                                                                    echo "<hr>";
-                                                                    echo "<h5>Civil Status</h5>";
-                                                                    echo "<hr>";
-                                                                    echo "<h6>$civilStatus</h6>";
-                                                                    echo "<hr>";
-                                                                    echo "<h5>Educational Attainment</h5>";
-                                                                    echo "<hr>";
-                                                                    echo "<h6>$educationalAttainment</h6>";
-                                                                    echo "<hr>";                                                                   echo "<h5>School</h5>";
-                                                                    echo "<hr>";
-                                                                    echo "<h6>$school</h6>";
-                                                                    echo "<hr>";
-                                                                    echo "<h5>Phic Id</h5>";
-                                                                    echo "<hr>";
-                                                                    echo "<h6>$phicId</h6>";
-                                                                    echo "<hr>";
-                                                                    echo "<h5>HDMF Id</h5>";
-                                                                    echo "<hr>";
-                                                                    echo "<h6>$hdmfId</h6>";
-                                                                    echo "<hr>";
-                                                                    echo "<h5>SSS Id</h5>";
-                                                                    echo "<hr>";
-                                                                    echo "<h6>$sssId</h6>";
-                                                                    echo "<hr>";
-                                                                    echo "<h5>TIN Id</h5>";
-                                                                    echo "<hr>";
-                                                                    echo "<h6>$tinId</h6>";
-                                                                    
-                                    echo "</div>";
-                                    echo "<div class='col-md-6'>";
-                                        echo "<h5>License</h5>";
-                                        echo "<hr>";
-                                        echo "<h6>$license</h6>";
-                                        echo "<hr>";
-                                        echo "<h5>License Id</h5>";
-                                        echo "<hr>";
-                                        echo "<h6>$licenseId</h6>";
-                                        echo "<hr>";
-                                        echo "<h5>License Expiration</h5>";
-                                        echo "<hr>";
-                                        echo "<h6>$licenseExpiration</h6>";
-                                        echo "<h5>Position</h5>";
-                                        echo "<hr>";
-                                        echo "<h6>$position</h6>";
-                                        echo "<hr>";
-                                        echo "<h5>Employment Status</h5>";
-                                        echo "<hr>";
-                                        echo "<h6>$empStatus</h6>";
-                                        echo "<hr>";
-                                        echo "<h5>Employment End Date</h5>";
-                                        echo "<hr>";
-                                        echo "<h6>$statusEndDate</h6>";
-                                        echo "<hr>";
-                                        echo "<h5>Employment Status Evaluation</h5>";
+                                    echo "                          <h2>$lastName, $firstName, $middleName</h2>";
+                                    echo "                          <h5>Employee Id</h5>";
+                                    echo "                          <hr>";
+                                    echo "                          <h6>$employeeid</h6>";
+                                    echo "                          <hr>";
+                                    echo "                          <h5>Gender</h5>";
+                                    echo "                          <hr>";
+                                    echo "                          <h6>$gender</h6>";
+                                    echo "                          <hr>";
+                                    echo "                          <h5>Age</h5>";
+                                    echo "                          <hr>";
+                                    echo "                          <h6>$age</h6>";
+                                    echo "                          <hr>";
+                                    echo "                          <h5>Contact Number</h5>";
+                                    echo "                          <hr>";
+                                    echo "                          <h6>$contactNo</h6>";
+                                    echo "                          <hr>";
+                                    echo "                          <h5>Address</h5>";
+                                    echo "                          <hr>";
+                                    echo "                          <h6>$address</h6>";
+                                    echo "                          <hr>";
+                                    echo "                          <h5>Bloodtype</h5>";
+                                    echo "                          <hr>";
+                                    echo "                          <h6>$bloodtype";
+                                    echo "                          <hr>";
+                                    echo "                          <h5>Civil Status</h5>";
+                                    echo "                          <hr>";
+                                    echo "                          <h6>$civilStatus</h6>";
+                                    echo "                          <hr>";
+                                    echo "                          <h5>Educational Attainment</h5>";
+                                    echo "                          <hr>";
+                                    echo "                          <h6>$educationalAttainment</h6>";
+                                    echo "                          <hr>";
+                                    echo "                          <h5>School</h5>";
+                                    echo "                          <hr>";
+                                    echo "                          <h6>$school</h6>";
+                                    echo "                          <hr>";
+                                    echo "                          <h5>Phic Id</h5>";
+                                    echo "                          <hr>";
+                                    echo "                          <h6>$phicId</h6>";
+                                    echo "                          <hr>";
+                                    echo "                          <h5>HDMF Id</h5>";
+                                    echo "                          <hr>";
+                                    echo "                          <h6>$hdmfId</h6>";
+                                    echo "                          <hr>";
+                                    echo "                          <h5>SSS Id</h5>";
+                                    echo "                          <hr>";
+                                    echo "                          <h6>$sssId</h6>";
+                                    echo "                          <hr>";
+                                    echo "                          <h5>TIN Id</h5>";
+                                    echo "                          <hr>";
+                                    echo "                          <h6>$tinId</h6>";                          
+                                    echo "                  </div>";
+                                    
+                                    echo "                  <div class='col-md-6'>";
+                                    echo "<h5>License</h5>";
+                                    echo "<hr>";
+                                    echo "<h6>$license</h6>";
+                                    echo "<hr>";
+                                    echo "<h5>License Id</h5>";
+                                    echo "<hr>";
+                                    echo "<h6>$licenseId</h6>";
+                                    echo "<hr>";
+                                    echo "<h5>License Expiration</h5>";
+                                    echo "<hr>";
+                                    echo "<h6>$licenseExpiration</h6>";
+                                    echo "<h5>Position</h5>";
+                                    echo "<hr>";
+                                    echo "<h6>$position</h6>";
+                                    echo "<hr>";
+                                    echo "<h5>Employment Status</h5>";
+                                    echo "<hr>";
+                                    echo "<h6>$empStatus</h6>";
+                                    echo "<hr>";
+                                    echo "<h5>Employment End Date</h5>";
+                                    echo "<hr>";
+                                    echo "<h6>$statusEndDate</h6>";
+                                    echo "<hr>";
+                                    echo "<h5>Employment Status Evaluation</h5>";
                                         echo "<hr>";
                                         echo "<h6>$statusEvaluation</h6>";
                                         echo "<hr>";
