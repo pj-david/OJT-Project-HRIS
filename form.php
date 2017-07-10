@@ -89,25 +89,25 @@
                                     <h3>Employee information</h3>
                                     
                                     <?php
-                $connection = mysqli_connect("localhost", "root", "", "humanresourcesdb") or die ("Error");
-        
-                if(isset($_POST['Add'])){
-                    $addEmployeeId = $_POST['employeeId'];
-                    $addFirstName = $_POST['firstName'];
-                    $addMiddleName = $_POST['middleName'];
-                    $addLastName = $_POST['lastName'];
-                    $addAge = $_POST['age'];
-                    $addGender = $_POST['gender'];
-                    $addAddress = $_POST['address'];
-                    $query = "INSERT INTO `humanresourcesdb`.`employees` (`employeeId`, `firstName`, `middleName`, `lastName`, `age`, `gender`, `address`) VALUES ('$addEmployeeId', '$addFirstName', '$addMiddleName', '$addLastName', '$addAge', '$addGender', '$addAddress')";
-                    
-                    if(mysqli_query($connection, $query)){
-                        echo "Tables updated!";
-                    }else{
-                       echo "Error: " . $query . "<br>" . mysqli_error($connection);
-                    }
-                }
-                ?>
+                                        $connection = mysqli_connect("localhost", "root", "", "humanresourcesdb") or die ("Error");
+
+                                        if(isset($_POST['Add'])){
+                                            $addEmployeeId = $_POST['employeeId'];
+                                            $addFirstName = $_POST['firstName'];
+                                            $addMiddleName = $_POST['middleName'];
+                                            $addLastName = $_POST['lastName'];
+                                            $addAge = $_POST['age'];
+                                            $addGender = $_POST['gender'];
+                                            $addAddress = $_POST['address'];
+                                            $query = "INSERT INTO `humanresourcesdb`.`employees` (`employeeId`, `firstName`, `middleName`, `lastName`, `age`, `gender`, `address`) VALUES ('$addEmployeeId', '$addFirstName', '$addMiddleName', '$addLastName', '$addAge', '$addGender', '$addAddress')";
+
+                                            if(mysqli_query($connection, $query)){
+                                                echo "Tables updated!";
+                                            }else{
+                                               echo "Error: " . $query . "<br>" . mysqli_error($connection);
+                                            }
+                                        }
+                                        ?>
 
                                     <form role="form" action="form.php" method="post">
                                         <div class="form-group">
