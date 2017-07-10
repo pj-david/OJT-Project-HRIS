@@ -27,17 +27,21 @@
                 </button>
                 <a class="navbar-brand" href="index.php">MetPhil Medical</a> 
             </div>
-  <div style="color: white;
-padding: 15px 50px 5px 50px;
-float: right;
-font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">Logout</a> </div>
-        </nav>   
+            <div style="color: white; padding: 15px 50px 5px 50px; float: right; font-size: 16px;"> 
+                <a href="login/index.php" class="btn btn-danger square-btn-adjust">Logout</a> 
+                <?php
+                    if(isset($_POST['Logout'])) {
+                        $_SESSION['loggedin'] = false;
+                        session_destroy();        
+                    } 
+                ?>
+            </div>
            <!-- /. NAV TOP  -->
                 <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li>
-                        <a class="active-menu" href="index.php"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
+                        <a class="active-menu" href="dashboard.php"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
                     </li>
                     
                     <li>
@@ -48,22 +52,6 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                             </li>
                             <li>
                                 <a href="fullTable.php">Full Employee Data</a>
-                            </li>
-                            <li>
-                                <a href="#">Second Level Link<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-
-                                </ul>
-                               
                             </li>
                         </ul>
                       </li> 
@@ -85,14 +73,33 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                         <h5>Welcome User!</h5>
                     </div>
                 </div>              
-                 <!-- /. ROW  -->
-                  <hr />
+               <?php
+                $connection = mysqli_connect("localhost", "root", "", "humanresourcesdb");
+                if(isset($_POST)){  
+                $numberEmployees = mysqli_query($connection, "select *from employees;");
+                $numberRegular = mysqli_query($connection, "select *from employees where empstatus='Regular';");
+                $numberContractual = mysqli_query($connection, "select *from employees where empstatus='Contractual';");
+                $numberProbationary = mysqli_query($connection, "select *from employees where empstatus='Probationary';");
+                $numberTrainee = mysqli_query($connection, "select *from employees where empstatus='Trainee';");
+
+                $count = mysqli_num_rows($numberEmployees);
+                $count2 = mysqli_num_rows($numberRegular);
+                $count3 = mysqli_num_rows($numberContractual);
+                $count4 = mysqli_num_rows($numberProbationary);
+                $count5 = mysqli_num_rows($numberTrainee);
+                if($count == 0){
+                echo "No results found.";
+                echo mysqli_error($connection);
+                }else{
+                    echo "Number of Employees: $count";
+                    echo "Regular: $count2";
+                    echo "Contractual: $count3";
+                    echo "Probationary: $count4";
+                    echo "Trainee: $count5";
+                }
+                    }
+                ?>
                 
-                 <!-- /. ROW  -->
-                <hr />                
-                <div class="row">
-                    
-             <!-- /. PAGE INNER  -->
             </div>
          <!-- /. PAGE WRAPPER  -->
         </div>

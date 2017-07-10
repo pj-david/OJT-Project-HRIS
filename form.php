@@ -25,17 +25,22 @@
                 </button>
                 <a class="navbar-brand" href="index.php">MetPhil Medical</a> 
             </div>
-  <div style="color: white;
-padding: 15px 50px 5px 50px;
-float: right;
-font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+            <div style="color: white; padding: 15px 50px 5px 50px; float: right; font-size: 16px;"> 
+                <a href="login/index.php" class="btn btn-danger square-btn-adjust">Logout</a> 
+                <?php
+                    if(isset($_POST['Logout'])) {
+                        $_SESSION['loggedin'] = false;
+                        session_destroy();        
+                    } 
+                ?>
+            </div>
         </nav>   
            <!-- /. NAV TOP  -->
                 <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li>
-                        <a  href="index.php"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
+                        <a  href="dashboard.php"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
                     </li>
                     
                     <li>
@@ -46,22 +51,6 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                             </li>
                             <li>
                                 <a href="fullTable.php">Full Employee Data</a>
-                            </li>
-                            <li>
-                                <a href="#">Second Level Link<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-
-                                </ul>
-                               
                             </li>
                         </ul>
                       </li> 
@@ -86,6 +75,7 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                 </div>
                  <!-- /. ROW  -->
                  <hr />
+                
                <div class="row">
                 <div class="col-md-12">
                     <!-- Form Elements -->
@@ -97,7 +87,29 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                             <div class="row">
                                 <div class="col-md-6">
                                     <h3>Employee information</h3>
-                                    <form role="form">
+                                    
+                                    <?php
+                $connection = mysqli_connect("localhost", "root", "", "humanresourcesdb") or die ("Error");
+        
+                if(isset($_POST['Add'])){
+                    $addEmployeeId = $_POST['employeeId'];
+                    $addFirstName = $_POST['firstName'];
+                    $addMiddleName = $_POST['middleName'];
+                    $addLastName = $_POST['lastName'];
+                    $addAge = $_POST['age'];
+                    $addGender = $_POST['gender'];
+                    $addAddress = $_POST['address'];
+                    $query = "INSERT INTO `humanresourcesdb`.`employees` (`employeeId`, `firstName`, `middleName`, `lastName`, `age`, `gender`, `address`) VALUES ('$addEmployeeId', '$addFirstName', '$addMiddleName', '$addLastName', '$addAge', '$addGender', '$addAddress')";
+                    
+                    if(mysqli_query($connection, $query)){
+                        echo "Tables updated!";
+                    }else{
+                       echo "Error: " . $query . "<br>" . mysqli_error($connection);
+                    }
+                }
+                ?>
+
+                                    <form role="form" action="form.php" method="post">
                                         <div class="form-group">
                                             <label>Employee ID</label>
                                             <input class="form-control" placeholder="" name="employeeId"/>
@@ -120,15 +132,16 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                                         </div>
                                         <div class="form-group">
                                             <label>Gender</label>
-                                            <select class="form-control">
-                                                <option name="gender">M</option>
-                                                <option name="gender">F</option>
+                                            <select class="form-control" name="gender">
+                                                <option>M</option>
+                                                <option >F</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label>Address</label>
-                                            <input class="form-control" placeholder="Street, City, Province, Postal code" name="Address"/>
+                                            <input class="form-control" placeholder="Street, City, Province, Postal code" name="address"/>
                                         </div>
+                                        <input type="submit" name="Add" value="Add">
                                     </form>
                                 </div>
                                 
@@ -153,7 +166,6 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
     <script src="assets/js/jquery.metisMenu.js"></script>
       <!-- CUSTOM SCRIPTS -->
     <script src="assets/js/custom.js"></script>
-    
    
 </body>
 </html>
