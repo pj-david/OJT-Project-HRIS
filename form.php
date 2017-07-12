@@ -85,10 +85,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-md-6">
-                                    <h3>Employee information</h3>
-                                    
-                                    <?php
+                                <?php
                 $connection = mysqli_connect("localhost", "root", "", "humanresourcesdb") or die ("Error");
         
                 if(isset($_POST['Add'])){
@@ -101,6 +98,7 @@
                     $addGender = $_POST['gender'];
                     $addAddress = $_POST['address'];
                     $addContactNo = $_POST['contactNo'];
+                    $addBloodType = $_POST['bloodType'];
                     $addEducationalAttainment = $_POST['educationalAttainment'];
                     $addSchool = $_POST['school'];
                     $addLicense = $_POST['license'];
@@ -124,8 +122,8 @@
                     }
                 }
                 ?>
-                
-                                    <form role="form" action="form.php" method="post">
+                                <form role="form" action="form.php" method="post">
+                                <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Employee ID</label>
                                             <input class="form-control" placeholder="" name="employeeId"/>
@@ -177,6 +175,9 @@
                                             <label>School</label>
                                             <input class="form-control" placeholder="University of..." name="school"/>
                                         </div>
+                                </div>
+    
+                                <div class="col-md-6">
                                         <div class="form-group">
                                             <label>License</label>
                                             <input class="form-control" placeholder="RN/Technician..." name="license"/>
@@ -213,8 +214,7 @@
                                                 <option >M</option>
                                             </select>
                                         </div>
-                                       
-                                            <div class="form-group">
+                                        <div class="form-group">
                                           <label>Position</label>
                                             <input class="form-control" placeholder="Biomedical Technician/HR Manager/etc..." name="position"/>
                                         </div>
@@ -232,16 +232,14 @@
                                           <label>Status Evaluation Date</label>
                                             <input class="form-control" placeholder="dd-Mmm-yy" name="statusEvaluationDate"/>
                                         </div>
-                                        
-                                        <input type="submit" name="Add" value="Add">
-                                    </form>
                                 </div>
-    
-                                <div class="col-md-6">
-                                    
-                                </div>
+                                
                      <!-- End Form Elements -->
+                                    <input type="submit" name="Add" value="Add">
+                                    </form>
+                                
                             </div>
+                            
                         </div>
     </div>
              <!-- /. PAGE INNER  -->

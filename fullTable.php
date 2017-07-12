@@ -139,7 +139,7 @@
                                                                     employmentcontracts.fifthContract_end
                                                                 FROM
                                                                     employees
-                                                                        JOIN
+                                                                LEFT JOIN
                                                                     employmentcontracts ON employees.employeeid = employmentcontracts.employeeid
                                                                 WHERE
                                                                     employees.employeeid = '$currentEmpId';");
