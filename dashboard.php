@@ -1,20 +1,4 @@
 <!DOCTYPE html>
-<?php
-    session_start();
-
-    if ($_SESSION['loggedin'] == false ) {
-    header('Location: ../login/index.php');
-    }
-?>
-
- <?php
-
-        $ntu_survey = new mysqli("localhost", "root", "", "humanresourcesdb");
-        // Check connection
-        if ($ntu_survey->connect_error) {
-            die("Connection failed: " . $ntu_survey->connect_error);
-        }
-    ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
       <meta charset="utf-8" />
@@ -87,9 +71,25 @@
                 <div class="row">
                     <div class="col-md-12">
                      <h2>Admin Dashboard</h2>   
-                        <h5>Welcome!</h5>
+                        <h5>Welcome User!</h5>
                     </div>
-                </div>              
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                 Employee Statistics
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTables-example">
+                                        <thead>
+                                            <th>Number of Employees</th>
+                                            <th>Regular</th>
+                                            <th>Contractual</th>
+                                            <th>Probationary</th>
+                                            <th>Trainee</th>
+                                        </thead>
                <?php
                 $connection = mysqli_connect("localhost", "root", "", "humanresourcesdb");
                 if(isset($_POST)){  
@@ -108,16 +108,20 @@
                 echo "No results found.";
                 echo mysqli_error($connection);
                 }else{
-                    echo "Number of Employees: $count";
-                    echo "Regular: $count2";
-                    echo "Contractual: $count3";
-                    echo "Probationary: $count4";
-                    echo "Trainee: $count5";
+                    echo "<tr>";
+                    echo "<td>$count</td>";
+                    echo "<td>$count2</td>";
+                    echo "<td>$count3</td>";
+                    echo "<td>$count4</td>";
+                    echo "<td>$count5</td>";
+                    echo "</tr>";
                 }
                     }
                 ?>
                 
-            </div>
+           
+                                </div>
+                            </div>
          <!-- /. PAGE WRAPPER  -->
         </div>
      <!-- /. WRAPPER  -->
