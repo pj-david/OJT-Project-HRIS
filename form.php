@@ -151,8 +151,10 @@
                                         <div class="form-group">
                                             <label>Gender</label>
                                             <select class="form-control" name="gender">
+                                                <option>(Please select one)</option>
                                                 <option>M</option>
                                                 <option >F</option>
+                                                <option>N/A</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
@@ -165,7 +167,18 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Blood Type</label>
-                                            <input class="form-control" placeholder="O-/0+/A-/A+/B-/B+/AB-/AB+" name="bloodType"/>
+                                            <select class="form-control" name="bloodType">
+                                                <option>(Please select one)</option>
+                                                <option>O-</option>
+                                                <option>O+</option>
+                                                <option>A-</option>
+                                                <option>A+</option>
+                                                <option>B-</option>
+                                                <option>B+</option>
+                                                <option>AB-</option>
+                                                <option>AB+</option>
+                                                <option>N/A</option>
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label>Educational Attainment</label>
@@ -220,8 +233,8 @@
                                         </div>
                                         <div class="form-group">
                                           <label>Employee Status</label>
-                                             <select class="form-control" name="empStatus">  <option>Regular</option>
-                                                <option >Contractual</option><option>Probationary</option><option>Trainee</option>
+                                             <select class="form-control" name="empStatus"> <option>(Please select one)</option> <option>Regular</option>
+                                                <option >Contractual</option><option>Probationary</option><option>Trainee</option><option>N/A</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
