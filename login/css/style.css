@@ -1,0 +1,180 @@
+*{
+	font-family: 'Raleway', sans-serif;
+	box-sizing: border-box;
+}
+
+.container-image{
+	background-image: url(../../assets/img/login.jpg);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	height: 100%;
+	width: 100%;
+}
+
+.container-image.blur{
+	-webkit-animation: blur 1s;
+	-webkit-animation-fill-mode: forwards;
+}
+.container-image.noblur{
+	-webkit-animation: noblur 1s;
+	-webkit-animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes blur{
+	0% { -webkit-filter: blur(0px); }
+	100% { -webkit-filter: blur(7px); }
+}
+
+@-webkit-keyframes noblur{
+	0% { -webkit-filter: blur(7px); }
+	100% { -webkit-filter: blur(0px); }
+}
+
+@-webkit-keyframes increase-opacity{
+	0% { background: rgba(255,255,255,0.7) }
+	100% {background: rgba(255,255,255,1) }
+}
+
+@-webkit-keyframes decrease-opacity{
+	0% { background: rgba(255,255,255,1) }
+	100% {background: rgba(255,255,255,0.7) }
+}
+
+.form-contain{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(255,255,255,0.7);
+	padding: 5% 5% 2% 5%;
+	border: 2px solid white;
+}
+
+.form-contain.increase-opacity{
+	-webkit-animation: increase-opacity 500ms;
+	-webkit-animation-fill-mode: forwards;
+}
+
+.form-contain.decrease-opacity{
+	-webkit-animation: decrease-opacity 500ms;
+	-webkit-animation-fill-mode: forwards;
+}
+
+.container-fluid{
+	background: transparent;
+	z-index: 2;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	
+}
+
+input.form-control{
+	border-top: 0;
+	border-left: 0;
+	border-right: 0;
+	border-bottom: 1px solid #60baff;
+	border-radius: 0;
+	box-shadow: 0 0 0;
+	background: transparent;
+}
+
+input.form-control:focus{
+	border: none;
+	box-shadow: 0 0 0;
+	border-bottom: 1px solid #60baff;
+}
+
+.input-group{
+	margin-bottom: 3%;
+}
+
+div.buttons.text-center{
+	margin-top: 15%;
+}
+
+input[type="text"], input[type="password"]{
+	font-family: 'Montserrat', sans-serif;
+	color: black;
+}
+
+.form-control::-webkit-input-placeholder{
+	color: black;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.form-control::-moz-placeholder{
+	color: black;
+	font-family: 'Montserrat', sans-serif;
+}
+
+ .form-control:-moz-placeholder{
+	color: black;
+	font-family: 'Montserrat', sans-serif;
+}
+
+ .form-control:focus:-ms-input-placeholder{
+	color: black;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.form-control:focus::-webkit-input-placeholder{ color:transparent; }
+.form-control:focus:-moz-placeholder{ color:transparent; }
+.form-control:focus::-moz-placeholder{ color:transparent; }
+.form-control:focus:-ms-input-placeholder { color:transparent; }
+
+.input-group-addon, .input-group-addon i{
+	background: transparent;
+}
+
+.input-group-addon{
+	border-top: 0;
+	border-left: 0;
+	border-right: 0;
+	border-bottom: 1px solid #60baff;
+	border-radius: 0;
+}
+
+.input-group-addon i{
+	color: black;
+	font-size: 15px;
+}
+
+.submitbtn, .signup-btn{
+	border-radius: 0;
+}
+
+.submitbtn{
+	background: red;
+	color: white;
+	border: none;
+}
+
+.form-header h2{
+	color: black;
+	margin-bottom: 10%;
+}
+
+#sgnup a{
+	padding: 0;
+	margin: 0;
+}
+#sbmt, #sgnup{
+	background: #60baff;
+	color: white;
+	height: 35px;
+	width: 100px;	
+}
+
+#sbmt:hover, #sgnup:hover{
+	background: #4385b7;
+}
